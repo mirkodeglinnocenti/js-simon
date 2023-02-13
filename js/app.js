@@ -9,19 +9,8 @@
 
 // creare una funzione che generi 5 numeri random e li inserisca dentro un array
 let arrayNumeri = [];
-let numeroDaInserire;
 
-while ( arrayNumeri.length < 5 ) {
-
-    numeroDaInserire = numeriRandom (1 , 100);
-
-    if ( !arrayNumeri.includes(numeroDaInserire) ) {
-        arrayNumeri.push(numeroDaInserire);
-    } else {
-        continue;
-    }
-
-}
+createNumbersArray (arrayNumeri);
 
 console.log(arrayNumeri)
 
@@ -31,51 +20,22 @@ alert(arrayNumeri);
 
 // far partire un timer di 30 secondi e poi permettere all'utente di inserire i 5 numeri uno alla volta tramite il prompt, 
 // quindi ad ogni inserimento dovremo pushare il numero inserito dentro un array
-
-// setTimeout (function(), 300);
-
 let arrayUtente = [];
-
-for (let i = 0; i < 5; i++){
-
-    let numeroInserito
-    do{
-        numeroInserito=parseInt(prompt('inserisci numero'));
-    } while ( isNaN(numeroInserito) )
-    
-
-    arrayUtente.push(numeroInserito);
-}
-
-console.log(arrayUtente)
-
-// confronto tra array - quanti e quali numeri sono stati individuati tramite console.log
-
-let numeriIndividuati = 0;
-
 let numeriInComune = []
 
-for (let i = 0; i < 5; i++){
+setTimeout (function() {
+
+    promptUtente (arrayUtente);
     
-    arrayUtente[i];
-
-    // console.log(arrayUtente[i])
-
-    if ( arrayNumeri.includes(arrayUtente[i])) {
-        numeriIndividuati ++;
-        numeriInComune.push(arrayUtente[i]);
-    }
+    console.log(arrayUtente)
+    
+    // // confronto tra array - quanti e quali numeri sono stati individuati tramite console.log
+    
+    
+    compareArray (numeriInComune, arrayNumeri, arrayUtente)
 
 
-}
-
-console.log('Hai indovinato:', numeriIndividuati, 'numeri');
-console.log('Hai indovinato questi numeri:', numeriInComune);
-
-
-
-
-
+}, 3000);
 
 
 
@@ -92,24 +52,67 @@ function numeriRandom (min, max) {
     return Math.floor(Math.random() * (max - min) + min); 
 }
 
-// function createArray(array, num) {
-//     while ( array.length < 5 ) {
+// Funzione creazione 5 numeri casuali
 
-//         num = numeriRandom (1 , 100);
+function createNumbersArray (array) {
 
-//         if ( !array.includes(num) ) {
-//             array.push(num);
-//         } else {
-//             continue;
-//         }
+    let numeroDaInserire;
 
-//     }
-//     return array;
-// }
+    while ( array.length < 5 ) {
+
+        numeroDaInserire = numeriRandom (1 , 100);
+
+        if ( !array.includes(numeroDaInserire) ) {
+            array.push(numeroDaInserire);
+        } else {
+            continue;
+        }
+
+    }
+
+}
+
+// Funzione che chiede all'utente di riscrivere i 5 numeri visti
+
+function promptUtente (array) {
+
+    for (let i = 0; i < 5; i++){
+
+        let numeroInserito;
+
+        do{
+            numeroInserito=parseInt(prompt('inserisci numero'));
+        } while ( isNaN(numeroInserito) )
+        
+
+        array.push(numeroInserito);
+    }
+
+}
 
 
 
 
+function compareArray (arraynumeriuguali, array1, array2) {
+
+    let numeriIndividuali = 0;
+
+    for (let i = 0; i < 5; i++){
+        
+        arrayUtente[i];
+
+        // console.log(arrayUtente[i])
+
+        if ( array1.includes(array2[i])) {
+            numeriIndividuali ++;
+            arraynumeriuguali.push(array2[i]);
+        }
 
 
+    }
 
+    console.log('Hai indovinato:', numeriIndividuali, 'numeri');
+    console.log('Hai indovinato questi numeri:', arraynumeriuguali);
+
+
+}
