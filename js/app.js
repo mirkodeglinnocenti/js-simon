@@ -38,7 +38,11 @@ let arrayUtente = [];
 
 for (let i = 0; i < 5; i++){
 
-    let numeroInserito = parseInt(prompt('inserisci numero'));
+    let numeroInserito
+    do{
+        numeroInserito=parseInt(prompt('inserisci numero'));
+    } while ( isNaN(numeroInserito) )
+    
 
     arrayUtente.push(numeroInserito);
 }
