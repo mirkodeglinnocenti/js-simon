@@ -116,7 +116,7 @@ function compareArray (arraynumeriuguali, array1, array2) {
     console.log('Hai indovinato:', numeriIndividuali, 'numeri');
     console.log('Hai indovinato questi numeri:', arraynumeriuguali);
 
-    resultElement.innerHTML = ` Hai indovinato: ${numeriIndividuali} numeri, che sono ${arraynumeriuguali} `;
+    resultElement.innerHTML = ` Hai indovinato: ${numeriIndividuali} numeri, che sono il ${arraynumeriuguali} `;
 
 
 }
